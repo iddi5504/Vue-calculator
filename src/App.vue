@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1 style="color: white; font-weight: 900;">Idris's Calculator</h1>
+    <h1 style="color: greenyellow; font-weight: 900;">Idris's Calculator</h1>
       <calculator></calculator>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
   color: #2c3e50;
   display: flex;
   justify-content: center;
-  background-image: url(/dist/background.jpg?cb027ee305c5bb1764004fbd4d43b451);
+  background-image: url("./assets/background.jpg");
   background-size: cover;
   height: 100vh;
   background-repeat: no-repeat;

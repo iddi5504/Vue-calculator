@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import { equal, notStrictEqual } from 'assert'
+
 
 export default {
     data(){
@@ -55,28 +57,66 @@ export default {
             }
         },
         subtract(){
-            this.action="subtract"
-            this.beforeOperationClick=true
-            this.operatorSign="-"
+            if (this.typednumber1 && this.typednumber2) {
+               this.typednumber1=this.equals()
+               this.typednumber2=""
+               this.action="subtract"
+               this.beforeOperationClick=true
+               this.operatorSign="-"
+            }
+            else{
+               this.action="subtract"
+               this.beforeOperationClick=true
+               this.operatorSign="-"
+
+            }
             
         },
         add(){
-            this.action="add"
-            this.beforeOperationClick=true
-            this.operatorSign="+"
+            if (this.typednumber1 && this.typednumber2) {
+               this.typednumber1=this.equals()
+               this.typednumber2=""
+               this.action="add"
+               this.beforeOperationClick=true
+               this.operatorSign="+"
+            }
+            else{
+               this.action="add"
+               this.beforeOperationClick=true
+               this.operatorSign="+"
+
+            }
+          
         },
         division(){
-            this.action="division"
-            this.beforeOperationClick=true
-            this.operatorSign="/"
+            if (this.typednumber1 && this.typednumber2) {
+               this.typednumber1=this.equals()
+               this.typednumber2=""
+               this.action="division"
+               this.beforeOperationClick=true
+               this.operatorSign="/"
+            }
+            else{
+               this.action="division"
+               this.beforeOperationClick=true
+               this.operatorSign="/"
 
-
+            }
         },
         multiply(){
-            this.action="multiply"
-            this.beforeOperationClick=true
-            this.operatorSign="x"
+            if (this.typednumber1 && this.typednumber2) {
+               this.typednumber1=this.equals()
+               this.typednumber2=""
+               this.action="multiply"
+               this.beforeOperationClick=true
+               this.operatorSign="X"
+            }
+            else{
+               this.action="multiply"
+               this.beforeOperationClick=true
+               this.operatorSign="X"
 
+            }
 
         },
         clear(){
@@ -84,26 +124,36 @@ export default {
             this.typednumber2=""
             this.operatorSign=""
             this.beforeOperationClick=false
+            this.result=""
         },
 
         equals(){
+            var result=""
             switch (this.action) {
                 case "add":
-                    this.result= parseInt(this.typednumber1)  + parseInt(this.typednumber2)
+                    this.result=parseInt(this.typednumber1)  + parseInt(this.typednumber2)
+                    result= parseInt(this.typednumber1)  + parseInt(this.typednumber2)
                     break;
                 case "subtract":
                     this.result= parseInt(this.typednumber1)  - parseInt(this.typednumber2)
+                    result= parseInt(this.typednumber1)  - parseInt(this.typednumber2)
+
                     break;
                 case "multiply":
                     this.result= parseInt(this.typednumber1)  * parseInt(this.typednumber2)
+                    result= parseInt(this.typednumber1)  * parseInt(this.typednumber2)
                     break;
                 case "division":
                     this.result= parseInt(this.typednumber1)  / parseInt(this.typednumber2)
+                    result= parseInt(this.typednumber1)  / parseInt(this.typednumber2)
+
                     break;
                 default:
                     break;
+                
             }
-            console.log(this.result)
+            return result
+
         }
     },
 
@@ -129,12 +179,16 @@ export default {
     min-width: 74px;
     min-height: 45px;
     border: none;
-    background: #967bb2e3;
+    background: #332828a1;
     color: white;
     font-size: 31px;
-    border-radius: 3px;
-    box-shadow: 1px 1px 2px #4a4233;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px 1px #000000;
     margin: 10px;
+}
+
+.key:hover{
+    box-shadow: inset 1px 1px 3px 1px #000000;
 }
 
 .pluskey{
@@ -154,31 +208,31 @@ export default {
     max-width: 560px;
     max-height: 519px;
     margin: 10px;
+    backdrop-filter: brightness(0.8) blur(1px);
 }
 .number{
     width: 100%;
-    padding: 6px;
+    padding: 6px 17px;
     font-size: 36px;
     display: flex;
     justify-content: end;
     color: white;
     height: 60px;
     margin: 6px;
-    background: #9f44f247;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .result{
     font-size: 34px;
-    color: white;
-    background: #7b22ba;
+    color: greenyellow;
     border-radius: 10px;
     width: 87%;
     padding: 10px;
     margin: 5px;
     box-shadow: 1px 1px 3px black;
     height: 53px;
-
+    background: #33383ee0;
 }
 
 </style>
